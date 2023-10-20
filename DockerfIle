@@ -1,0 +1,15 @@
+# Make small image for running this service
+FROM linux:latest
+
+RUN apt-get update
+RUN apt-get install -y ca-certificates
+
+WORKDIR /usr/local/bin
+
+COPY --from=phenikaa-embedded:builder /projects/phenikaa-embedded/. /usr/local/bin/
+# COPY . /usr/local/bin
+
+RUN ls -la /usr/local/bin/infrastructure/
+EXPOSE 12002
+
+CMD ["./phenikaa-embedded"]
