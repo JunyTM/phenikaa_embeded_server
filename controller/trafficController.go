@@ -61,7 +61,7 @@ func (c *trafficController) UpdateTrafficLight(w http.ResponseWriter, r *http.Re
 	}
 
 	// Update the traffic light info to the database
-	if err := c.db.Model(&trafficLight).Where("id = 1").Updates(trafficLight).Error; err != nil {
+	if err := c.db.Model(&trafficLight).Where("id = 1").Save(trafficLight).Error; err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		w.WriteHeader(http.StatusInternalServerError)
 		res = model.Response{

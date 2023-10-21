@@ -8,5 +8,5 @@ type TrafficLight struct {
 	TimeYellow    int    `json:"time_yellow"`
 	TimeEmergency int    `json:"time_emergency"`
 	IsEmergency   bool   `json:"is_emergency"`
+	IsNight       bool   `json:"is_night" default:"false"`
 }
-
