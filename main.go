@@ -41,10 +41,8 @@ func router() http.Handler {
 	r.Use(cors.Handler)
 
 	// Declear handler
-	socket := controller.NewWebSocketController()
 	traffic := controller.NewTrafficController()
 
-	r.HandleFunc("/ws", socket.StartConnect)
 	r.Route("/api", func(router chi.Router) {
 		router.Get("/traffic", traffic.GetTrafficLight)
 		router.Put("/traffic", traffic.UpdateTrafficLight)
